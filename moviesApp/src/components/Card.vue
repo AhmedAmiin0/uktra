@@ -43,7 +43,7 @@ defineEmits(["btn-click", "delete-btn-click"]);
         color="error"
         variant="text"
         @click="$emit('delete-btn-click', id)"
-        v-if="user.role === 'admin'"
+        v-if="user?.role === 'admin'"
       >
         delete
       </VBtn>

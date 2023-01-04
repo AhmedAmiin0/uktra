@@ -21,6 +21,14 @@
           >Toggle Theme</VBtn
         >
         <VBtn @click="logout" color="error" v-if="token != null">Logout</VBtn>
+        <VBtn
+          :to="{ name: 'Login' }"
+          color="success"
+          v-else
+          style="margin-right: 10px"
+        >
+          Login
+        </VBtn>
       </VAppBar>
       <VNavigationDrawer
         permanent
