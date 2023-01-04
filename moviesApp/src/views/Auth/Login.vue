@@ -59,7 +59,7 @@ async function handleSubmit() {
       email: email.value,
       password: password.value,
     });
-    store.login(data.access_token);
+    store.login(data.access_token, data.user);
     router.push({ name: "Movies" });
   } catch (e) {
     console.log(e);
