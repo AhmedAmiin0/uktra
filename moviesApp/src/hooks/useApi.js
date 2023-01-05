@@ -49,6 +49,6 @@ export default function useApi(fun) {
     error,
     request,
     abort,
-    loading: computed(() => loading.value),
+    loading,
   };
 }

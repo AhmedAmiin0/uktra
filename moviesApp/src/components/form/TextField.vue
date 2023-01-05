@@ -1,12 +1,8 @@
 <template>
-  <VTextField
-    v-model="field.text"
-    :label="field.label"
-    :name="field.name"
-    :v-bind="field"
-    :rules="field.rules"
-    outlined
-  />
+  <VTextField v-model="field.text" :label="field.label" :name="field.name" :v-bind="field" :rules="field.rules"
+    :type="field.type ? field.type : 'text'" outlined :prepend-icon="field.prependIcon && field.prependIcon" />
+
+
 </template>
 
 <script>
@@ -25,4 +21,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
