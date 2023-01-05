@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
   <VRow style="padding: 20px">
     <VCol cols="12" md="6">
-      <template v-if="props.edit === true && user?.role === 'admin'">
+      <template v-if="props.edit === true && user && user.role === 'admin'">
         <TextField :fields="movie.title" variant="outlined" />
         <TextField :fields="movie.excerpt" variant="outlined" />
         <Textarea :fields="movie.description" variant="outlined" />
@@ -50,9 +50,7 @@ onMounted(() => {
     <VCol cols="12" md="6">
       <PreviewImage :image="movie.thumbnail.text" />
       <VCardText class="mb-4 text--primary">
-        <VCardSubtitle
-          v-if="movie.end_date.text < new Date().toISOString().split('T')[0]"
-        >
+        <VCardSubtitle v-if="movie.end_date.text < new Date().toISOString().split('T')[0]">
           <span style="color: red">Movie Ended</span>
         </VCardSubtitle>
         <VCardSubtitle v-else>

@@ -36,32 +36,20 @@ getMovieById();
     <VToolbar color="primary">
       <VToolbarTitle>Edit Movie</VToolbarTitle>
       <VSpacer />
-      <VBtn
-        class="mr-4"
-        :icon="edit ? 'mdi-close' : 'mdi-pencil'"
-        @click="edit = !edit"
-        v-if="user?.role === 'admin'"
-      />
+      <VBtn class="mr-4" :icon="edit ? 'mdi-close' : 'mdi-pencil'" @click="edit = !edit"
+        v-if="user && user.role === 'admin'" />
     </VToolbar>
     <VForm @submit.prevent="handleSubmit" v-model="valid" ref="form">
       <MoviesForm :movie="movie" :edit="edit" />
       <VCardActions>
         <VSpacer />
-        <VBtn
-          v-if="edit === true && user?.role === 'admin'"
-          color="primary"
-          type="submit"
-          :loading="updateMovie.loading && updateMovie.loading == true"
-          >Save</VBtn
-        >
+        <VBtn v-if="edit === true && user && user.role === 'admin'" color="primary" type="submit"
+          :loading="updateMovie.loading && updateMovie.loading == true">Save</VBtn>
         <VBtn color="primary" v-else @click="dialog = true">Book</VBtn>
       </VCardActions>
     </VForm>
   </VCard>
-  <div
-    v-if="user?.role === 'admin'"
-    style="display: flex; justify-content: space-between; margin-top: 20px"
-  >
+  <div v-if="user && user.role === 'admin'" style="display: flex; justify-content: space-between; margin-top: 20px">
     <VBtn color="primary" :href="excelUrl"> Download Excel File </VBtn>
     <VBtn color="secondary" :href="pdfUrl"> Download PDF File </VBtn>
   </div>
@@ -79,15 +67,8 @@ getMovieById();
           <span :disabled="chair.user_id">{{ chair.row }} </span>
         </VCol>
         <VCol cols="3" style="text-align: center">
-          <VBtn
-            v-if="chair.user_id"
-            color="red"
-            @click="handleCancelChair(chair)"
-            >Cancel</VBtn
-          >
-          <VBtn v-else color="primary" @click="handleBookChair(chair)"
-            >Book</VBtn
-          >
+          <VBtn v-if="chair.user_id" color="red" @click="handleCancelChair(chair)">Cancel</VBtn>
+          <VBtn v-else color="primary" @click="handleBookChair(chair)">Book</VBtn>
         </VCol>
       </VRow>
     </template>

@@ -32,19 +32,10 @@ defineEmits(["btn-click", "delete-btn-click"]);
     <v-card-subtitle> {{ subtitle }}</v-card-subtitle>
     <VDivider class="mx-4 mb-1" />
     <VCardActions>
-      <VBtn
-        color="deep-purple-lighten-2"
-        variant="text"
-        @click="$emit('btn-click', id)"
-      >
+      <VBtn color="deep-purple-lighten-2" variant="text" @click="$emit('btn-click', id)">
         details
       </VBtn>
-      <VBtn
-        color="error"
-        variant="text"
-        @click="$emit('delete-btn-click', id)"
-        v-if="user?.role === 'admin'"
-      >
+      <VBtn color="error" variant="text" @click="$emit('delete-btn-click', id)" v-if="user && user.role === 'admin'">
         delete
       </VBtn>
     </VCardActions>
