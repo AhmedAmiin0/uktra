@@ -24,7 +24,7 @@ async function handleSubmit() {
     name: name.value,
     password_confirmation: passwordConfirmation.value,
   });
-  store.login(data.access_token);
+  store.login(data.access_token, data.user);
   router.push({ name: "Movies" });
 }
 function validateName(name) {
@@ -55,46 +55,19 @@ function validatePassword(password) {
         <VToolbarTitle>Login form</VToolbarTitle>
       </VToolbar>
       <VCardText>
-        <VTextField
-          id="name"
-          prepend-icon="mdi-account"
-          name="name"
-          label="Name"
-          v-model="name"
-          :rules="[validateName]"
-        />
+        <VTextField id="name" prepend-icon="mdi-account" name="name" label="Name" v-model="name"
+          :rules="[validateName]" />
 
-        <VTextField
-          id="email"
-          prepend-icon="mdi-email"
-          name="email"
-          label="Email"
-          type="email"
-          v-model="email"
-          :rules="[validateEmail]"
-        />
-        <VTextField
-          id="password"
-          name="password"
-          label="Password"
-          v-model="password"
-          prepend-icon="mdi-lock"
-          :rules="[validatePassword]"
-          :type="passwordVisible ? 'text' : 'password'"
+        <VTextField id="email" prepend-icon="mdi-email" name="email" label="Email" type="email" v-model="email"
+          :rules="[validateEmail]" />
+        <VTextField id="password" name="password" label="Password" v-model="password" prepend-icon="mdi-lock"
+          :rules="[validatePassword]" :type="passwordVisible ? 'text' : 'password'"
           :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="passwordVisible = !passwordVisible"
-        />
-        <VTextField
-          id="password"
-          name="password_confirmation"
-          label="Confirm Password"
-          v-model="passwordConfirmation"
-          prepend-icon="mdi-lock"
-          :rules="[validatePassword]"
-          :type="passwordVisible ? 'text' : 'password'"
+          @click:append="passwordVisible = !passwordVisible" />
+        <VTextField id="password" name="password_confirmation" label="Confirm Password" v-model="passwordConfirmation"
+          prepend-icon="mdi-lock" :rules="[validatePassword]" :type="passwordVisible ? 'text' : 'password'"
           :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="passwordVisible = !passwordVisible"
-        />
+          @click:append="passwordVisible = !passwordVisible" />
       </VCardText>
       <VCardActions style="justify-content: space-between; width: 100%">
         <VBtn color="primary" :to="{ name: 'Login' }">

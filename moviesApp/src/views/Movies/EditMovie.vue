@@ -66,15 +66,13 @@ getMovieById();
         <VCol cols="3" style="text-align: center">
           <span :disabled="chair.user_id">{{ chair.row }} </span>
         </VCol>
-        <VCol cols="3" style="text-align: center">
-          <VBtn v-if="chair.user_id" color="red" @click="handleCancelChair(chair)">Cancel</VBtn>
-          <VBtn v-else color="primary" @click="handleBookChair(chair)">Book</VBtn>
+        <VCol cols="3" style="text-align: center" v-if="user">
+          <VBtn v-if="chair.user_id && chair.user_id === user.id" color="red" @click="handleCancelChair(chair)">Cancel
+          </VBtn>
+          <VBtn v-else-if="chair.user_id === null" color="primary" @click="handleBookChair(chair)">Book</VBtn>
         </VCol>
       </VRow>
     </template>
-    <template #actions>
-      <VBtn color="primary" text @click="dialog = false">Cancel</VBtn>
-      <VBtn color="primary" text @click="dialog = false">Book</VBtn>
-    </template>
+
   </Modal>
 </template>
