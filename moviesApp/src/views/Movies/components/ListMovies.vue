@@ -1,5 +1,7 @@
 <script setup>
 import useListAllMoviesHook from "@/views/Movies/hooks/useListAllMoviesHook";
+import IsAdmin from "@/components/IsAdmin.vue";
+
 const {
   movies,
   search,
@@ -18,6 +20,13 @@ const {
     class="mb-4"
     outlined
   />
+  <IsIAdmin>
+    <template #default>
+      <VBtn :to="{ name: 'CreateMovie' }" color="success" class="mb-5">
+        Add Movie
+      </VBtn>
+    </template>
+  </IsIAdmin>
   <VRow>
     <VCol v-for="movie in movies" :key="movie.id" cols="12" md="4">
       <MoviesCard
