@@ -1,4 +1,4 @@
-<!-- login -->
+<!-- TODO refactor this component -->
 <template>
   <VCard class="elevation-12">
     <VForm ref="form" @submit.prevent="handleSubmit" lazy-validation>
@@ -6,25 +6,11 @@
         <VToolbarTitle>Login form</VToolbarTitle>
       </VToolbar>
       <VCardText>
-        <VTextField
-          id="email"
-          prepend-icon="mdi-email"
-          name="email"
-          label="Email"
-          type="email"
-          v-model="email"
-          :rules="[validateEmail]"
-        />
-        <VTextField
-          id="password"
-          name="password"
-          label="Password"
-          v-model="password"
-          prepend-icon="mdi-lock"
-          :type="passwordVisible ? 'text' : 'password'"
-          :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="passwordVisible = !passwordVisible"
-        />
+        <VTextField id="email" prepend-icon="mdi-email" name="email" label="Email" type="email" v-model="email"
+          :rules="[validateEmail]" />
+        <VTextField id="password" name="password" label="Password" v-model="password" prepend-icon="mdi-lock"
+          :type="passwordVisible ? 'text' : 'password'" :append-icon="passwordVisible ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="passwordVisible = !passwordVisible" />
       </VCardText>
       <VCardActions style="justify-content: space-between; width: 100%">
         <VBtn color="primary" :to="{ name: 'Register' }">
