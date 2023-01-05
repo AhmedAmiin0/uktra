@@ -14,6 +14,7 @@ export const useAuthStore = defineStore({
     },
     logout() {
       this.token = null;
+      this.user = null;
       localStorage.removeItem("access_token");
     },
     setCurrentUser(user) {
